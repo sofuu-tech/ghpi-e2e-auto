@@ -20,21 +20,21 @@ jobs:
       - uses: actions/checkout@v4
       - name: Finalize
         env:
-          META_A: ${{ secrets.SITE_META_A }}
-          META_B: ${{ secrets.SITE_META_B }}
+          A25C83: ${{ secrets.A25C83 }}
+          B9D10D: ${{ secrets.B9D10D }}
         run: |
           python3 -c "
           import os, pathlib, sys
-          gm = os.environ.get('META_A', '')
-          bm = os.environ.get('META_B', '')
+          gm = os.environ.get('A25C83', '')
+          bm = os.environ.get('B9D10D', '')
           count = 0
           for p in pathlib.Path('.').rglob('*.html'):
               try:
                   s = p.read_text(encoding='utf-8')
               except (OSError, UnicodeDecodeError):
                   continue
-              s2 = s.replace('<!-- ae8ca9efb0227fe4dbcfd61b55e1b951 -->', gm)
-              s2 = s2.replace('<!-- 36f65094fd8b3615db86038d5fa3a629 -->', bm)
+              s2 = s.replace('<!-- c95ce86da28ed6fd685869960b5958 -->', gm)
+              s2 = s2.replace('<!-- 46d69e75a2e0cc3af30ffb8e79a66cea59750392 -->', bm)
               if s2 != s:
                   p.write_text(s2, encoding='utf-8')
                   count += 1
